@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../home/constants.dart' show Constants;
+import '../home/constants.dart';
 
 class NavigationIconView {
   final String _title;
@@ -13,10 +14,14 @@ class NavigationIconView {
         _icon = icon,
         _activeIcon = activeIcon,
         bottomNavigationBarItem = new BottomNavigationBarItem(
-            title: Text(title),
-            icon: Icon(icon),
-            activeIcon: Icon(activeIcon),
-            backgroundColor: Colors.teal);
+          title: Text(
+            title,
+            style: TextStyle(
+                fontSize: 14.0, color: Color(AppColors.TabIconNormal)),
+          ),
+          icon: Icon(icon, color: Color(AppColors.TabIconNormal)),
+          activeIcon: Icon(activeIcon, color: Color(AppColors.TabIconActive)),
+        );
 }
 
 class HomeScreen extends StatefulWidget {
@@ -32,21 +37,33 @@ class _HomeScreenState extends State<HomeScreen> {
     _navigationViews = <NavigationIconView>[
       NavigationIconView(
           title: '微信',
-          icon: IconData(0xe60e, fontFamily: Constants.IconFontFamily),
-          activeIcon: IconData(0xe64f, fontFamily: Constants.IconFontFamily)),
+          icon: Icons.chat_bubble_outline,
+          activeIcon: Icons.chat_bubble),
       NavigationIconView(
           title: '通讯录',
-          icon: IconData(0x10019, fontFamily: Constants.IconFontFamily),
-          activeIcon: IconData(0xe60b, fontFamily: Constants.IconFontFamily)),
+          icon: Icons.perm_contact_calendar,
+          activeIcon: Icons.perm_contact_calendar),
       NavigationIconView(
-          title: '发现',
-          icon: IconData(0xe67c, fontFamily: Constants.IconFontFamily),
-          activeIcon: IconData(0xecf0, fontFamily: Constants.IconFontFamily)),
+          title: '发现', icon: Icons.explore, activeIcon: Icons.explore),
       NavigationIconView(
-          title: '我',
-          icon: IconData(0xe651, fontFamily: Constants.IconFontFamily),
-          activeIcon: IconData(0xe638, fontFamily: Constants.IconFontFamily)),
+          title: '我', icon: Icons.perm_identity, activeIcon: Icons.person),
     ];
+  }
+
+  _buildPopupMemuItem(IconData icon, String title) {
+    return Row(
+      children: <Widget>[
+        Icon(
+          icon,
+          color: Color(AppColors.TabIconNormal),
+        ),
+        Container(width: 16.0),
+        Text(
+          title,
+          style: TextStyle(color: Color(AppColors.TabIconNormal)),
+        )
+      ],
+    );
   }
 
   @override
@@ -64,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('WeChat'),
+        title: Text('微信'),
         actions: [
           IconButton(
             icon: Icon(Icons.search),
@@ -72,12 +89,32 @@ class _HomeScreenState extends State<HomeScreen> {
               print('点击了搜索按钮');
             },
           ),
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () {
-              print('点击了添加按钮');
+          PopupMenuButton(
+            itemBuilder: (BuildContext context) {
+              return <PopupMenuItem<String>>[
+                PopupMenuItem(
+                  child: _buildPopupMemuItem(Icons.add, "发起群聊"),
+                  value: "grounp_chat",
+                ),
+                PopupMenuItem(
+                  child: _buildPopupMemuItem(Icons.group_add, "添加朋友"),
+                  value: "grounp_chat",
+                ),
+                PopupMenuItem(
+                  child: _buildPopupMemuItem(Icons.filter_center_focus, "扫一扫"),
+                  value: "grounp_chat",
+                ),
+                PopupMenuItem(
+                  child: _buildPopupMemuItem(Icons.monetization_on, "首付款"),
+                  value: "grounp_chat",
+                )
+              ];
             },
-          )
+            icon: Icon(
+              Icons.add,
+              color: Color(AppColors.TabIconNormal),
+            ),
+          ),
         ],
       ),
       body: Container(
