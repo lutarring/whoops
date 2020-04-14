@@ -1,0 +1,121 @@
+{
+  "id": "1753270",
+  "name": "font",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "978126",
+      "name": "我",
+      "font_class": "wo",
+      "unicode": "e651",
+      "unicode_decimal": 58961
+    },
+    {
+      "icon_id": "1017764",
+      "name": "信息",
+      "font_class": "xinxi1",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "1680823",
+      "name": "兔子",
+      "font_class": "tuzi",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "1995277",
+      "name": "兔子",
+      "font_class": "tuzi1",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "2198791",
+      "name": "通讯录",
+      "font_class": "tongxunlu",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "3840968",
+      "name": "发现",
+      "font_class": "faxian",
+      "unicode": "e67c",
+      "unicode_decimal": 59004
+    },
+    {
+      "icon_id": "4509551",
+      "name": "我",
+      "font_class": "wo2",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "4987953",
+      "name": "我",
+      "font_class": "wo3",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "7064895",
+      "name": "通讯录",
+      "font_class": "tongxunlu1",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "8300191",
+      "name": "微信",
+      "font_class": "weixin",
+      "unicode": "e63a",
+      "unicode_decimal": 58938
+    },
+    {
+      "icon_id": "9113764",
+      "name": "发现",
+      "font_class": "faxian1",
+      "unicode": "ecf0",
+      "unicode_decimal": 60656
+    },
+    {
+      "icon_id": "9251670",
+      "name": "14-狐狸",
+      "font_class": "-huli",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "9252041",
+      "name": "21-狐狸",
+      "font_class": "-huli1",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "9252042",
+      "name": "06-兔子",
+      "font_class": "-tuzi",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "12160216",
+      "name": "信息",
+      "font_class": "xinxi3",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "13287540",
+      "name": "通讯录",
+      "font_class": "tongxunlu2",
+      "unicode": "10019",
+      "unicode_decimal": 65561
+    }
+  ]
+}
