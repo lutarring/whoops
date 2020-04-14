@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'home/home_screen.dart';
+import 'home/constants.dart';
 
 void main() => runApp(MaterialApp(
-  title: 'WeChat',
-  home: HomeScreen(),
-));
-
-
+      title: 'WeChat',
+      theme: ThemeData.light().copyWith(primaryColor: Color(AppColors.AppBarColor)),
+      home: HomeScreen(),
+    ));

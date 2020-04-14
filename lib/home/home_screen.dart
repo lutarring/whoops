@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import '../home/constants.dart' show Constants;
 
 class NavigationIconView {
   final String _title;
-  final Widget _icon;
-  final Widget _activeIcon;
+  final IconData _icon;
+  final IconData _activeIcon;
   final BottomNavigationBarItem bottomNavigationBarItem;
 
-  NavigationIconView({Key key, String title, Widget icon, Widget activeIcon})
+  NavigationIconView(
+      {Key key, String title, IconData icon, IconData activeIcon})
       : _title = title,
         _icon = icon,
         _activeIcon = activeIcon,
         bottomNavigationBarItem = new BottomNavigationBarItem(
             title: Text(title),
-            icon: icon,
-            activeIcon: activeIcon,
+            icon: Icon(icon),
+            activeIcon: Icon(activeIcon),
             backgroundColor: Colors.teal);
 }
 
@@ -30,20 +32,20 @@ class _HomeScreenState extends State<HomeScreen> {
     _navigationViews = <NavigationIconView>[
       NavigationIconView(
           title: '微信',
-          icon: const Icon(Icons.chat_bubble),
-          activeIcon: const Icon(Icons.chat_bubble)),
+          icon: IconData(0xe60e, fontFamily: Constants.IconFontFamily),
+          activeIcon: IconData(0xe64f, fontFamily: Constants.IconFontFamily)),
       NavigationIconView(
           title: '通讯录',
-          icon: const Icon(Icons.contacts),
-          activeIcon: const Icon(Icons.chat_bubble)),
+          icon: IconData(0x10019, fontFamily: Constants.IconFontFamily),
+          activeIcon: IconData(0xe60b, fontFamily: Constants.IconFontFamily)),
       NavigationIconView(
           title: '发现',
-          icon: const Icon(Icons.explore),
-          activeIcon: const Icon(Icons.chat_bubble)),
+          icon: IconData(0xe67c, fontFamily: Constants.IconFontFamily),
+          activeIcon: IconData(0xecf0, fontFamily: Constants.IconFontFamily)),
       NavigationIconView(
           title: '我',
-          icon: const Icon(Icons.menu),
-          activeIcon: const Icon(Icons.chat_bubble)),
+          icon: IconData(0xe651, fontFamily: Constants.IconFontFamily),
+          activeIcon: IconData(0xe638, fontFamily: Constants.IconFontFamily)),
     ];
   }
 
@@ -63,7 +65,20 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('WeChat'),
-        backgroundColor: Colors.teal,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              print('点击了搜索按钮');
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () {
+              print('点击了添加按钮');
+            },
+          )
+        ],
       ),
       body: Container(
         color: Colors.white,
