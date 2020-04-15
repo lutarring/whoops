@@ -3,24 +3,14 @@ import '../home/constants.dart' show Constants;
 import '../home/constants.dart';
 
 class NavigationIconView {
-  final String _title;
-  final IconData _icon;
-  final IconData _activeIcon;
   final BottomNavigationBarItem bottomNavigationBarItem;
 
   NavigationIconView(
       {Key key, String title, IconData icon, IconData activeIcon})
-      : _title = title,
-        _icon = icon,
-        _activeIcon = activeIcon,
-        bottomNavigationBarItem = new BottomNavigationBarItem(
-          title: Text(
-            title,
-            style: TextStyle(
-                fontSize: 14.0, color: Color(AppColors.TabIconNormal)),
-          ),
-          icon: Icon(icon, color: Color(AppColors.TabIconNormal)),
-          activeIcon: Icon(activeIcon, color: Color(AppColors.TabIconActive)),
+      : bottomNavigationBarItem = new BottomNavigationBarItem(
+          title: Text(title),
+          icon: Icon(icon),
+          activeIcon: Icon(activeIcon),
         );
 }
 
@@ -30,7 +20,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  PageController _pageController;
+  int _currentIndex = 0;
   List<NavigationIconView> _navigationViews;
+  List<Widget> _pages;
 
   void initState() {
     super.initState();
@@ -48,6 +41,21 @@ class _HomeScreenState extends State<HomeScreen> {
       NavigationIconView(
           title: '我', icon: Icons.perm_identity, activeIcon: Icons.person),
     ];
+    _pageController = PageController(initialPage: _currentIndex);
+    _pages = [
+      Container(
+        color: Colors.red,
+      ),
+      Container(
+        color: Colors.orange,
+      ),
+      Container(
+        color: Colors.yellow,
+      ),
+      Container(
+        color: Colors.green,
+      ),
+    ];
   }
 
   _buildPopupMemuItem(IconData icon, String title) {
@@ -55,12 +63,14 @@ class _HomeScreenState extends State<HomeScreen> {
       children: <Widget>[
         Icon(
           icon,
-          color: Color(AppColors.TabIconNormal),
+          color: const Color(AppColors.PopupMenuTextColor),
+          size: 18.0,
         ),
-        Container(width: 16.0),
+        Container(width: 12.0),
         Text(
           title,
-          style: TextStyle(color: Color(AppColors.TabIconNormal)),
+          style: TextStyle(
+              color: const Color(AppColors.PopupMenuTextColor), fontSize: 18.0),
         )
       ],
     );
@@ -69,19 +79,29 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final BottomNavigationBar botNavBar = new BottomNavigationBar(
+        fixedColor: Color(AppColors.TabIconActive),
         items: _navigationViews
             .map((NavigationIconView navigationView) =>
                 navigationView.bottomNavigationBarItem)
             .toList(),
-        currentIndex: 0,
+        currentIndex: _currentIndex,
+        //点击控制
         type: BottomNavigationBarType.fixed,
         onTap: (int index) {
-          print('点击的是第$index 个Tab');
+          setState(() {
+            _currentIndex = index;
+
+            _pageController.animateToPage(_currentIndex,
+                duration: Duration(microseconds: 200), curve: Curves.easeInOut);
+          });
+
+          print('点击的是第 $index 个Tab');
         });
 
     return Scaffold(
       appBar: AppBar(
         title: Text('微信'),
+        elevation: 0,
         actions: [
           IconButton(
             icon: Icon(Icons.search),
@@ -110,16 +130,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 )
               ];
             },
-            icon: Icon(
-              Icons.add,
-              color: Color(AppColors.TabIconNormal),
-            ),
+            icon: Icon(Icons.add),
           ),
         ],
       ),
-      body: Container(
-        color: Colors.white,
-      ),
+      body: PageView.builder(
+          itemBuilder: (BuildContext context, int index) {return _pages[index];},
+          controller: _pageController,
+          itemCount: _pages.length,
+          onPageChanged: (int index) {
+            setState(() {
+              _currentIndex = index;
+            });
+            print("当前是第 $index 页");
+          }),
       bottomNavigationBar: botNavBar,
     );
   }
