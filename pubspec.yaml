@@ -29,21 +29,23 @@ dev_dependencies:
     sdk: flutter
 
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
+  # For information on the generic Dart part of this file, see the
+  # following page: https://dart.dev/tools/pub/pubspec
 
-# The following section is specific to Flutter.
-flutter:
+  # The following section is specific to Flutter.
+  #flutter:
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
-  uses-material-design: true
+  #  uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -68,10 +70,27 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
+# For details regarding fonts from package dependencies,
+# see https://flutter.dev/custom-fonts/#from-packages
 
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/image01.jpg
+    - assets/images/image02.jpg
+    - assets/images/image03.jpg
+    - assets/images/image04.jpg
+    - assets/images/image05.jpg
+    - assets/images/image06.jpg
+    - assets/images/image07.jpg
+    - assets/images/image08.jpg
+    - assets/images/image09.jpg
+    - assets/images/image10.jpg
+    - assets/images/image11.jpg
 fonts:
-   - family: appIconFont
-     fonts:
-       - asset: assets/fonts/iconfont.ttf
+  - family: appIconFont
+    fonts:
+      - asset: assets/fonts/iconfont.ttf
+
+

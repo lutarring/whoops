@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../home/constants.dart' show Constants;
 import '../home/constants.dart';
+import 'package:oops/home/conversation_page.dart';
 
 class NavigationIconView {
   final BottomNavigationBarItem bottomNavigationBarItem;
@@ -43,9 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ];
     _pageController = PageController(initialPage: _currentIndex);
     _pages = [
-      Container(
-        color: Colors.red,
-      ),
+      ConversationPage(),
       Container(
         color: Colors.orange,
       ),
